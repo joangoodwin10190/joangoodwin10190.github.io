@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Weiterleitung …</title>
+<style>
+  html,body{height:100%;margin:0}
+  body{display:flex;align-items:center;justify-content:center;background:#f4f7f7;
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#14202b}
+  .box{text-align:center}
+  .sp{width:38px;height:38px;border:3px solid #cfe0dc;border-top-color:#0e7c66;border-radius:50%;
+    margin:0 auto 14px;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  small{color:#6b7a80}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="sp"></div>
+    <div>Sie werden zum offiziellen Anbieter weitergeleitet …</div>
+    <small>Einen Moment bitte.</small>
+  </div>
+<script>
+(function () {
+  var BASE = "https://www.slmw4qtrk.com/ZZ2GX/HQS89X/";
+  var sub1 = "ozshopde";
+  try {
+    var t = JSON.parse(localStorage.getItem("oz_track") || "{}");
+    var cid = t.gclid || t.fbclid || t.ttclid || t.msclkid;
+    if (cid) sub1 = cid;                       // paid click -> gclid in sub1; else organic tag
+  } catch (e) {}
+  var url = BASE + (BASE.indexOf("?") > -1 ? "&" : "?") + "sub1=" + encodeURIComponent(sub1);
+  // .replace() leaves no back-button entry pointing here
+  setTimeout(function () { window.location.replace(url); }, 250);
+})();
+</script>
+</body>
+</html>
