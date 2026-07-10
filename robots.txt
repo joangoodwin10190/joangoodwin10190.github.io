@@ -1,6 +1,6 @@
-# Staging: indexing disabled until the production domain (ozem-shop.de) is live.
+# Staging: indexing disabled until the production domain (ozem-plus.store) is live.
 # On launch, replace with: User-agent: *  Allow: /  and the live sitemap URL.
 User-agent: *
 Disallow: /go/
 Disallow: /
-Sitemap: https://ozem-shop.de/sitemap.xml
+Sitemap: https://ozem-plus.store/sitemap.xml
