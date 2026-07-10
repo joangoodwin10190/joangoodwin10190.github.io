@@ -198,16 +198,15 @@
   <a class="cta" href="/go/">Ansehen →</a>
 </div>
 
-<div class="pop" id="exitpop" aria-hidden="true" role="dialog">
-  <div class="pop-ov" data-close></div>
+<div class="pop" id="exitpop" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="pop-ov"></div>
   <div class="pop-box">
-    <button class="pop-close" data-close aria-label="Schließen">×</button>
-    <span class="pop-badge">Ihr Rabatt ist noch aktiv</span>
+    <span class="pop-badge">⚠️ Letzte Chance</span>
     <img src="assets/img/capsule.webp" width="444" height="346" alt="Ozem+ Kapsel">
-    <h3>Bis zu −46 % auf die Ozem+ Kur</h3>
-    <p>Das aktuelle Angebot des offiziellen Anbieters ist noch verfügbar – inklusive versandkostenfreier Mehrfach-Kur und 30-Tage-Geld-zurück-Option.</p>
-    <a class="cta" href="/go/">Angebot jetzt ansehen →</a>
-    <button class="skip" data-close>Nein danke, weiter lesen</button>
+    <h3>Ihr Rabatt von bis zu −46&nbsp;% ist noch aktiv</h3>
+    <p>Sichern Sie sich die versandkostenfreie Ozem+ Kur inkl. 30-Tage-Geld-zurück-Option – solange das Angebot des offiziellen Anbieters läuft.</p>
+    <a class="cta" href="/go/">Jetzt Angebot sichern →</a>
+    <button class="skip" data-close>Nein danke, weiterlesen</button>
   </div>
 </div>
 
@@ -225,7 +224,7 @@
         <a href="/haftungsausschluss.html">Haftung &amp; Gesundheitshinweis</a>
       </div>
     </div>
-    <p class="disc"><strong>Affiliate-Hinweis:</strong> ozem-shop.de ist eine unabhängige Informations- und Testseite und nicht der Verkäufer der vorgestellten Produkte. Einige Links sind Affiliate-Links: Wenn Sie darüber bestellen, erhalten wir unter Umständen eine Provision. Für Sie ändert sich der Preis dadurch nicht. Unsere Einschätzung bleibt davon unberührt. Alle Angaben ohne Gewähr. Dieser Beitrag stellt keine medizinische Beratung dar; Nahrungsergänzungsmittel ersetzen keine ausgewogene Ernährung oder ärztliche Behandlung.</p>
+    <p class="disc">Affiliate-Hinweis: Diese Seite enthält Affiliate-Links – wir erhalten ggf. eine Provision, für Sie ohne Aufpreis. Wir sind nicht der Verkäufer. Keine medizinische Beratung.</p>
   </div>
 </footer>
 
@@ -233,12 +232,21 @@
 <script>
 (function () {
   var pop = document.getElementById("exitpop"), shown = false;
-  function show() { if (shown || !pop) return; shown = true; pop.classList.add("show"); pop.setAttribute("aria-hidden","false"); try { sessionStorage.setItem("oz_exit","1"); } catch(e){} }
-  function hide() { if (!pop) return; pop.classList.remove("show"); pop.setAttribute("aria-hidden","true"); }
-  var seen = false; try { seen = sessionStorage.getItem("oz_exit") === "1"; } catch(e){}
-  if (!seen) {
-    document.addEventListener("mouseleave", function (e) { if (e.clientY <= 0) show(); });
-    setTimeout(show, 30000);                              // gentle fallback after 30s
+  function seen(){ try { return sessionStorage.getItem("oz_pop") === "1"; } catch(e){ return false; } }
+  function show() {
+    if (shown || !pop || seen()) return;
+    shown = true;
+    try { sessionStorage.setItem("oz_pop","1"); } catch(e){}
+    pop.classList.add("show"); pop.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";            // modal focus on the offer
+  }
+  function hide() { if (!pop) return; pop.classList.remove("show"); pop.setAttribute("aria-hidden","true"); document.body.style.overflow = ""; }
+  if (!seen()) {
+    setTimeout(show, 18000);                              // timed trigger (no exit-intent)
+    window.addEventListener("scroll", function onScroll() { // …or once the reader is ~55% down
+      var sd = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (sd > 0.55) { show(); window.removeEventListener("scroll", onScroll); }
+    }, { passive: true });
   }
   document.addEventListener("click", function (e) { if (e.target.closest("[data-close]")) { e.preventDefault(); hide(); } });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(); });

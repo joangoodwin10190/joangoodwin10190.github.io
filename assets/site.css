@@ -143,8 +143,12 @@ ul.check li::before{content:"✓";position:absolute;left:3px;top:9px;color:var(-
 .pop img{max-height:120px;width:auto;margin:0 auto 12px}
 .pop h3{font-size:21px;margin:0 0 8px}
 .pop p{color:var(--dim);font-size:15px;margin:0 0 16px}
-.pop .cta{width:100%}
-.pop .skip{display:block;margin-top:12px;background:none;border:0;color:var(--faint);font-size:13px;cursor:pointer;text-decoration:underline}
+.pop .cta{width:100%;font-size:18.5px;padding:17px 24px;animation:ctaPulse 1.7s ease-in-out infinite}
+@keyframes ctaPulse{0%,100%{box-shadow:0 8px 22px rgba(232,85,45,.32);transform:translateZ(0) scale(1)}50%{box-shadow:0 10px 34px rgba(232,85,45,.55);transform:translateZ(0) scale(1.015)}}
+.pop .pop-badge{background:var(--red);animation:badgeBlink 1.2s steps(1) infinite}
+@keyframes badgeBlink{0%,60%{opacity:1}61%,100%{opacity:.72}}
+.pop .skip{display:block;margin:11px auto 0;background:none;border:0;color:var(--faint);font-size:12.5px;cursor:pointer;text-decoration:underline;opacity:.75}
+.pop .skip:hover{opacity:1}
 
 /* footer */
 footer{background:#0f1a20;color:#9fb0b8;margin-top:40px;padding:36px 0 30px;font-size:14px}
