@@ -3,3 +3,4 @@ __pycache__/
 
 # internal notes — never publish to the live site
 CLAUDE.md
+backlinks-log.json
