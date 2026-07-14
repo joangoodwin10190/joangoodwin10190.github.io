@@ -107,16 +107,7 @@
 
 <div id="sticky-cta"><div class="p">Ozem+ · € 54,90 <small>tot -46 % · 30d</small></div><a class="cta" href="/nl/go/">Aanbieding →</a></div>
 
-<div class="pop" id="exitpop" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="pop-ov"></div>
-  <div class="pop-box">
-    <span class="pop-badge">⚠️ Laatste kans</span>
-    <img src="/assets/img/capsule.webp" width="444" height="346" alt="Ozem+">
-    <h3>Uw korting tot -46 % is nog actief</h3><p>Profiteer van gratis verzending en 30 dagen niet-goed-geld-terug zolang de aanbieding loopt.</p>
-    <a class="cta" href="/nl/go/">Bekijk de actuele aanbieding →</a>
-    <button class="skip" data-close>Nee bedankt, verder lezen</button>
-  </div>
-</div>
+<div class="pop" id="exitpop" aria-hidden="true" role="dialog" aria-modal="true"><div class="pop-ov"></div><div class="pop-box"><button class="pop-close" type="button" aria-label="Schließen">✕</button><span class="pop-badge">⚠️ Wacht heel even!</span><img src="/assets/img/box.webp" width="1000" height="805" alt="Ozem+"><h3>Uw korting tot −46 % staat nog klaar</h3><p>Profiteer nu van gratis verzending en 60 dagen niet-goed-geld-terug – alleen zolang de voorraad strekt.</p><a class="cta" href="/nl/go/">Ja, mijn −46 % korting claimen →</a></div></div>
 
 <footer><div class="wrap"><div class="cols">
   <div><a class="brand" href="https://ozem-plus.store/nl/" style="color:#fff"><span class="mk">O+</span> Ozem+</a><div class="byline">Onafhankelijke test &amp; redactie · Ozem+ · Juli 2026</div></div>
@@ -126,14 +117,6 @@
 </div></footer>
 
 <script src="/assets/config.js"></script>
-<script>
-(function(){var pop=document.getElementById("exitpop"),shown=false;
-function seen(){try{return sessionStorage.getItem("oz_pop")==="1"}catch(e){return false}}
-function show(){if(shown||!pop||seen())return;shown=true;try{sessionStorage.setItem("oz_pop","1")}catch(e){}pop.classList.add("show");pop.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}
-function hide(){if(!pop)return;pop.classList.remove("show");pop.setAttribute("aria-hidden","true");document.body.style.overflow=""}
-if(!seen()){setTimeout(show,18000);window.addEventListener("scroll",function o(){if((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight>0.55){show();window.removeEventListener("scroll",o)}},{passive:true})}
-document.addEventListener("click",function(ev){if(ev.target.closest("[data-close]")){ev.preventDefault();hide()}});
-document.addEventListener("keydown",function(ev){if(ev.key==="Escape")hide()});})();
-</script>
+<script>(function(){var pop=document.getElementById("exitpop"),shown=false;var paid=false;try{var t=JSON.parse(localStorage.getItem("oz_track")||"{}");paid=!!(t.gclid||t.msclkid||t.fbclid||t.ttclid||t.gbraid||t.wbraid);}catch(e){}function seen(){try{return sessionStorage.getItem("oz_pop")==="1"}catch(e){return false}}function show(){if(shown||!pop||seen())return;shown=true;try{sessionStorage.setItem("oz_pop","1")}catch(e){}pop.classList.add("show");pop.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}function hide(){if(!pop)return;pop.classList.remove("show");pop.setAttribute("aria-hidden","true");document.body.style.overflow=""}if(!seen()){setTimeout(show,15000);window.addEventListener("scroll",function o(){if((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight>0.5){show();window.removeEventListener("scroll",o)}},{passive:true})}if(paid){document.addEventListener("click",function(e){if(e.target.closest(".pop-close")||e.target.closest(".pop-ov"))hide()});document.addEventListener("keydown",function(e){if(e.key==="Escape")hide()});}})();</script>
 </body>
 </html>

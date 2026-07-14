@@ -85,16 +85,7 @@
 
 <div id="sticky-cta"><div class="p">Ozem+ · Farmacia</div><a class="cta" href="/it/go/">Vedi →</a></div>
 
-<div class="pop" id="exitpop" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="pop-ov"></div>
-  <div class="pop-box">
-    <span class="pop-badge">⚠️ Ultima occasione</span>
-    <img src="/assets/img/capsule.webp" width="444" height="346" alt="Ozem+">
-    <h3>Lo sconto fino al -46% è ancora attivo</h3><p><p>Lo sconto fino al -46% con spedizione gratuita è ancora disponibile sul sito ufficiale, ma è legato alle scorte e il fornitore può ritirarlo in qualsiasi momento. Se vuoi assicurarti le compresse Oz+ al prezzo scontato, il momento giusto per ordinare è adesso.</p></p>
-    <a class="cta" href="/it/go/">Vedi l'offerta ufficiale → →</a>
-    <button class="skip" data-close>No grazie, continua a leggere</button>
-  </div>
-</div>
+<div class="pop" id="exitpop" aria-hidden="true" role="dialog" aria-modal="true"><div class="pop-ov"></div><div class="pop-box"><button class="pop-close" type="button" aria-label="Schließen">✕</button><span class="pop-badge">⚠️ Aspetta un attimo!</span><img src="/assets/img/box.webp" width="1000" height="805" alt="Ozem+"><h3>Il tuo sconto fino al −46 % è ancora riservato</h3><p>Approfitta ora della spedizione gratuita e dei 60 giorni soddisfatti o rimborsati – solo fino a esaurimento scorte.</p><a class="cta" href="/it/go/">Sì, voglio il mio sconto −46 % →</a></div></div>
 
 <footer><div class="wrap"><div class="cols">
   <div><a class="brand" href="https://ozem-plus.store/it/" style="color:#fff"><span class="mk">O+</span> Ozem+</a><div class="byline">Informazioni sul prodotto &amp; offerta · 2026</div></div>
@@ -104,14 +95,6 @@
 </div></footer>
 
 <script src="/assets/config.js"></script>
-<script>
-(function(){var pop=document.getElementById("exitpop"),shown=false;
-function seen(){try{return sessionStorage.getItem("oz_pop")==="1"}catch(e){return false}}
-function show(){if(shown||!pop||seen())return;shown=true;try{sessionStorage.setItem("oz_pop","1")}catch(e){}pop.classList.add("show");pop.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}
-function hide(){if(!pop)return;pop.classList.remove("show");pop.setAttribute("aria-hidden","true");document.body.style.overflow=""}
-if(!seen()){setTimeout(show,18000);window.addEventListener("scroll",function o(){if((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight>0.55){show();window.removeEventListener("scroll",o)}},{passive:true})}
-document.addEventListener("click",function(ev){if(ev.target.closest("[data-close]")){ev.preventDefault();hide()}});
-document.addEventListener("keydown",function(ev){if(ev.key==="Escape")hide()});})();
-</script>
+<script>(function(){var pop=document.getElementById("exitpop"),shown=false;var paid=false;try{var t=JSON.parse(localStorage.getItem("oz_track")||"{}");paid=!!(t.gclid||t.msclkid||t.fbclid||t.ttclid||t.gbraid||t.wbraid);}catch(e){}function seen(){try{return sessionStorage.getItem("oz_pop")==="1"}catch(e){return false}}function show(){if(shown||!pop||seen())return;shown=true;try{sessionStorage.setItem("oz_pop","1")}catch(e){}pop.classList.add("show");pop.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}function hide(){if(!pop)return;pop.classList.remove("show");pop.setAttribute("aria-hidden","true");document.body.style.overflow=""}if(!seen()){setTimeout(show,15000);window.addEventListener("scroll",function o(){if((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight>0.5){show();window.removeEventListener("scroll",o)}},{passive:true})}if(paid){document.addEventListener("click",function(e){if(e.target.closest(".pop-close")||e.target.closest(".pop-ov"))hide()});document.addEventListener("keydown",function(e){if(e.key==="Escape")hide()});}})();</script>
 </body>
 </html>
